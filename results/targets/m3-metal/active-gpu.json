@@ -1,0 +1,5 @@
+{
+  "backend": "metal",
+  "device": "Metal",
+  "description": "Apple M3 Pro"
+}

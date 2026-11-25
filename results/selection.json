@@ -1,0 +1,37 @@
+{
+  "greedy_top_two": [
+    "enc_attn",
+    "dec_cross"
+  ],
+  "mixed_full": {
+    "config": "enc_attn",
+    "meets_dev_budget": true,
+    "max_delta_wer_pp": 0.0,
+    "eligible": [
+      "enc_attn"
+    ]
+  },
+  "all_full": {
+    "config": "enc_attn",
+    "meets_dev_budget": true,
+    "max_delta_wer_pp": 0.0,
+    "eligible": [
+      "enc_attn",
+      "fp16",
+      "q5_0",
+      "q8_0"
+    ]
+  },
+  "all_configs": {
+    "config": "enc_attn+ctx768",
+    "meets_dev_budget": true,
+    "max_delta_wer_pp": 0.5154639175257731,
+    "eligible": [
+      "enc_attn",
+      "enc_attn+ctx768",
+      "fp16",
+      "q5_0",
+      "q8_0"
+    ]
+  }
+}

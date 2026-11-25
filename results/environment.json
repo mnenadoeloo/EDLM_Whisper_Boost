@@ -1,0 +1,66 @@
+{
+  "machine": {
+    "model": "Mac15,7",
+    "cpu": "Apple M3 Pro",
+    "arch": "arm64",
+    "physical_cores": 12,
+    "logical_cores": 12,
+    "performance_cores": 6,
+    "efficiency_cores": 6,
+    "ram_bytes": 38654705664
+  },
+  "software": {
+    "os": "macOS 27.2.1",
+    "os_build": "26B131",
+    "compiler": "Apple clang 21.0.0 (clang-2100.1.1.101)",
+    "cmake": "4.1.0",
+    "ffmpeg": "8.0",
+    "benchmark_python": "3.12.11"
+  },
+  "runtime": {
+    "repository": "https://github.com/ggml-org/whisper.cpp",
+    "commit": "4979e04f5dcaccb36057e059bbaed8a2f5288315",
+    "patch": "patches/whisper-mixed.patch",
+    "cli_sha256": "6dbc66c1d68d7b290f35fbd10653cac6b3e85fd733ca459f21dafc7814483b2a",
+    "libraries": {
+      "libggml-base.dylib": "8ae1f60d94660eae410349224880dda17a73922b67cf601da1ff85513c17e808",
+      "libggml-cpu.dylib": "4b4c46cf8c023afd7536ac41656d0027bdae3f48d341608487066fc815aad645",
+      "libggml.dylib": "16e24c23c9a7abafeac0e23ce9bc05f04ed9b4d6ee099c882f989eed4c04a20c",
+      "libwhisper.1.8.2.dylib": "e0de98675d8bea6658ebfd03a69f84514893e5a5506ecc9adff19e8284c8152e"
+    },
+    "patch_sha256": "dbbd97309aa443b3fbaaad2ae3de5b0ec61b02d7d226dd13aff1a6564202f8b2"
+  },
+  "build": {
+    "CMAKE_BUILD_TYPE": "Release",
+    "GGML_CPU": true,
+    "GGML_NATIVE": true,
+    "GGML_ACCELERATE": true,
+    "GGML_BLAS": false,
+    "GGML_METAL": false,
+    "WHISPER_COREML": false,
+    "GGML_CUDA": false,
+    "WHISPER_OPENVINO": false,
+    "openmp_linked": false,
+    "cpu_target": "-mcpu=native+dotprod+i8mm+nosve+nosme"
+  },
+  "measurement": {
+    "threads": 4,
+    "whisper_flags": [
+      "-ng",
+      "-fa",
+      "-bs",
+      "1",
+      "-bo",
+      "1",
+      "-tp",
+      "0",
+      "-nf",
+      "-nt",
+      "-otxt"
+    ],
+    "warmup_id": "ls-374-180298-0000",
+    "latency_scope": "new CLI process per clip, including model load; one warm-up per configuration and invocation",
+    "peak_rss": "wait4 on each CLI child, bytes on Darwin",
+    "energy": "unmeasured"
+  }
+}

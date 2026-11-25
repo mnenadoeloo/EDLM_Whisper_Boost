@@ -1,0 +1,16 @@
+[
+  "fp16",
+  "q4_0",
+  "q5_0",
+  "q8_0",
+  "greedy",
+  "enc_attn",
+  "fp16+ctx",
+  "q4_0+ctx",
+  "enc_attn+ctx",
+  "enc_attn+ctx768",
+  "fp16+ctx768",
+  "q4_0+ctx768",
+  "dec_cross",
+  "dec_cross_cal"
+]

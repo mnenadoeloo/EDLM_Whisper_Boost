@@ -1,0 +1,17 @@
+id,language,same_window_schedule,cli_windows,resident_windows,same_window_texts,first_text_delta_s,same_final_text
+golos-ff-test-01605,ru,True,1,1,True,-0.086022,True
+golos-ff-test-01615,ru,True,3,3,True,-0.032855,True
+golos-ff-test-01633,ru,True,1,1,True,-0.078836,True
+golos-ff-test-00548,ru,True,2,2,True,-0.105966,True
+golos-ff-test-00083,ru,True,4,4,True,-0.163921,True
+golos-ff-test-00075,ru,True,1,1,True,-0.069612,True
+golos-ff-test-00613,ru,True,4,4,True,-0.112838,True
+golos-ff-test-00167,ru,True,2,2,True,-0.090023,True
+ls-4970-29095-0017,en,True,3,3,True,-0.14014,True
+ls-4970-29095-0034,en,True,4,4,True,-0.066141,True
+ls-2830-3980-0054,en,True,7,7,True,-0.098857,True
+ls-8230-279154-0016,en,True,8,8,True,-0.108298,True
+ls-2961-961-0012,en,True,9,9,True,-0.076987,True
+ls-1221-135766-0013,en,True,3,3,True,-0.089079,True
+ls-1221-135766-0003,en,True,10,10,True,-0.091774,True
+ls-8230-279154-0017,en,True,6,6,True,-0.072916,True

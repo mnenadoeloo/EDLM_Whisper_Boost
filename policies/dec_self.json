@@ -1,0 +1,14 @@
+{
+  "source_model": "openai/whisper-small",
+  "default": {
+    "format": "Q4_0",
+    "method": "rtn"
+  },
+  "rules": [
+    {
+      "pattern": "decoder.blocks.*.attn.*.weight",
+      "format": "Q8_0",
+      "method": "rtn"
+    }
+  ]
+}

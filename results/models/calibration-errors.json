@@ -1,0 +1,26 @@
+{
+  "encoder.blocks.0.attn.query.weight": {
+    "rtn_weighted_sse": 1.2055434334451514,
+    "calibrated_weighted_sse": 0.945574616219087,
+    "blocks": 18432,
+    "changed_blocks": 14767,
+    "rtn_payload_sha256": "aefc150773393d7692c867f7f700180d2d4e552bced26249e4cb3755fadf73f3",
+    "calibrated_payload_sha256": "cb0a8fcd205f75ff4afe9041500876f5c7cacd1f23c5f72b65e060770583e5b1"
+  },
+  "encoder.blocks.0.attn.key.weight": {
+    "rtn_weighted_sse": 1.3600942310216118,
+    "calibrated_weighted_sse": 1.0865635770857924,
+    "blocks": 18432,
+    "changed_blocks": 14779,
+    "rtn_payload_sha256": "3cccd75b4d6dd89ba4134bb6334cdc598103706b3adbbef13a04fb9f03fac213",
+    "calibrated_payload_sha256": "15c673ebae9deec383fd57afbabbdd99bc7261043aab844369755cc727e4b3d7"
+  },
+  "encoder.blocks.0.attn.value.weight": {
+    "rtn_weighted_sse": 0.9710425216698615,
+    "calibrated_weighted_sse": 0.7154785403888926,
+    "blocks": 18432,
+    "changed_blocks": 15820,
+    "rtn_payload_sha256": "5947b20a9bebacc3dfe5e501f701c9648fedb7d76b9ea658bac3a9106a3a715e",
+    "calibrated_payload_sha256": "8daf8246046777ef2874ad15c4bfe60e1498b248bf251a943af45fbd6a5c08cd"
+  }
+}

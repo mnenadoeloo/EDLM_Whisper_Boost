@@ -1,0 +1,34 @@
+{
+  "source_model": "openai/whisper-small",
+  "default": {
+    "format": "Q4_0",
+    "method": "rtn"
+  },
+  "rules": [
+    {
+      "pattern": "decoder.blocks.*.cross_attn.query.weight",
+      "format": "Q5_0",
+      "method": "rtn"
+    },
+    {
+      "pattern": "decoder.blocks.*.cross_attn.key.weight",
+      "format": "Q8_0",
+      "method": "rtn"
+    },
+    {
+      "pattern": "decoder.blocks.*.cross_attn.value.weight",
+      "format": "Q8_0",
+      "method": "rtn"
+    },
+    {
+      "pattern": "decoder.blocks.*.cross_attn.out.weight",
+      "format": "Q5_0",
+      "method": "rtn"
+    },
+    {
+      "pattern": "decoder.token_embedding.weight",
+      "format": "Q5_0",
+      "method": "rtn"
+    }
+  ]
+}

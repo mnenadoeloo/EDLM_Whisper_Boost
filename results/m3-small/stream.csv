@@ -1,0 +1,5 @@
+language,backend,clips,audio_s,windows,word_errors,words,wer,window_compute_s,compute_rtf,elapsed_s,first_text_before_audio_end,first_text_s_observed,first_text_s_p50,first_text_s_p95,first_confirmed_s_observed,first_confirmed_s_p50,first_confirmed_s_p95
+ru,cli,8,21.858375,18,13,34,38.235294,11.501886,0.5262,27.991334,4,8,2.128379,2.195155,8,3.136645,4.843007
+ru,resident,8,21.858375,18,13,34,38.235294,9.813778,0.448971,27.045578,4,8,2.042502,2.06964,8,3.003661,4.731559
+en,cli,8,68.735,50,10,176,5.681818,33.171584,0.482601,75.471674,8,8,2.130926,2.342205,8,3.635599,3.936814
+en,resident,8,68.735,50,10,176,5.681818,28.462102,0.414085,74.486995,8,8,2.043763,2.216322,8,3.550162,3.747979

@@ -1,0 +1,58 @@
+{
+  "split": "dev",
+  "threads": 4,
+  "flags": [
+    "-fa",
+    "-bs",
+    "1",
+    "-bo",
+    "1",
+    "-tp",
+    "0",
+    "-nf",
+    "-nt",
+    "-otxt"
+  ],
+  "host": "MacBook-Pro.local",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "cli_sha256": "de5e854be80b0d7cc2c288891b6f8cf202c83b81273f07ae945f6926ac436395",
+  "libraries": {
+    "libggml-metal.dylib": "96d7a5b15983d40d7c958112ea5045ac40f3f0ee1f4dcb7ed7470999eb80fd35",
+    "libggml-base.dylib": "8ae1f60d94660eae410349224880dda17a73922b67cf601da1ff85513c17e808",
+    "libggml-cpu.dylib": "62e62ecfc3a52579b9f87a7009ca6801522264cf7c6df840260f28228b860971",
+    "libggml.dylib": "13695ed45d7bf52f1b9dc1237780bfb3cf29ab1dc6c2ddda43cb288d81c5f889",
+    "libwhisper.1.8.2.dylib": "961eec41a9271f87d4200240284cddc479aa2bfb36c28a6f307a5f5dc184654e"
+  },
+  "audio_sha256": {
+    "ls-2035-147961-0037": "569dc9292e5ac1b8237ff08dc8c27c414be57bd1acb09925b7925b01caaac2f3",
+    "ls-84-121550-0015": "71a4d2014e2f47e6d5dbb30c05eafe76db8e77231788fb42ae7022359c39ff1a",
+    "ls-6295-64301-0023": "969d135de8c68a80ac75260f7b04f9bb85bc813f730c0e42a82606b71c54a9ef",
+    "ls-1272-128104-0008": "9514dcfa2f52cd7540c686c555213ca539b7ec8913b93913d14bfed151bdb72e",
+    "ls-3752-4944-0016": "51b273db499f83fbc6a650a66a27b7370dc0e628098f7947d4631281b0efc0ff",
+    "ls-2428-83705-0025": "bf1395cece4328ac9f661f51e16549458ba03ee6575211c4b0c122760c69c788",
+    "ls-2412-153954-0017": "b305c0d0686c4b0c46b141f5bb17b0405eaf6168dadde43b9fbed75fa9f5eb77",
+    "ls-8842-304647-0007": "eedea80b5627ca054e19a7919db2697ee9f2c16398d2dc95e0e6f2ba65ac9b58",
+    "golos-ff-validation-00058": "b16d3bc825e9864faa52bfbf20e4deafa8200338a4c948fa7957718df073525d",
+    "golos-ff-validation-00174": "b852f8b2f0bd6ac5da9ea7580347021bb39a3761ab42a53d02dc6ba97b16c897",
+    "golos-ff-validation-00291": "e965a4c2d02c2c5a747c9e9a5320f61a0c66f3b1df9eb3bda2bfad76ddd1adae",
+    "golos-ff-validation-00408": "5f57aef80ce7ad21f8cd7cffc6595c79986263a39c559fc587ec5a2ea4f13908",
+    "golos-ff-validation-00524": "83d1e8c5f0a8d7585ed83e835544272738b4686e3d00d9b584ee35716bbdec6a",
+    "golos-ff-validation-00641": "c9e12a7f39f5ad5270a4a654b914a4cba165b4943e886547487a663f03dce270",
+    "golos-ff-validation-00758": "c870a2efe9b3f71c4bcdbbda89e5e93ab9662ff2a38ca2b7e2696b0944c1d69f",
+    "golos-ff-validation-00874": "e75c6be7e0d4f39499ef11598274a2ca2123f38c9ddec8d9819e84cb08bdd473"
+  },
+  "manifest_sha256": "c4e1b83c066732d54e67cc5cfbf0c6203f6108fea2b15d424229ff9a21d69513",
+  "warmup": "ls-374-180298-0000",
+  "context_rule": "min(1500,max(256,64*ceil((duration_s+1)*50/64)))",
+  "hardware": {
+    "backend": "metal",
+    "cpu": "Apple M3 Pro",
+    "arch": "arm64",
+    "platform": "macOS-27.2.1-arm64-arm-64bit",
+    "host": "MacBook-Pro.local",
+    "logical_cpus": 12
+  },
+  "config": "fp16",
+  "model_bytes": 487601967,
+  "model_sha256": "1be3a9b2063867b937e64e2ec7483364a79917e157fa98c5d94b5c1fffea987b"
+}

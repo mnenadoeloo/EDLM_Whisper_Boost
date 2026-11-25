@@ -1,0 +1,3 @@
+split,language,baseline,candidate,bootstrap_unit,units,delta_wer_pp,speedup,delta_wer_low_pp,delta_wer_high_pp,speedup_low,speedup_high
+m3_pilot,ru,enc_attn+ctx768,m3_enc1+ctx768,clip,128,-1.808318,1.061243,-3.738557,0.170656,1.04773,1.074973
+m3_pilot,en,enc_attn+ctx768,m3_enc1+ctx768,speaker,16,0.0,1.047262,-0.180509,0.202856,1.02949,1.068578
