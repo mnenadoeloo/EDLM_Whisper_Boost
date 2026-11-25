@@ -21,6 +21,13 @@ def summarize(out):
                 raise ValueError("Expected one file run for each of the 32 clips per language")
             file_rows.append({"language": lang, "model": model, **s, "wall_s": s["rtf"] * s["audio_s"]})
     write_csv(out / "files.csv", file_rows)
+    archive_path = out / "stream-archive.json"
+    archived = archive_path.is_file()
+    if archived:
+        archive = json.loads(archive_path.read_text())
+        for name in ("stream-meta.json", "stream.jsonl"):
+            if sha256(out / name) != archive["sha256"][name]:
+                raise ValueError(f"Archived streaming measurement changed: {name}")
     meta = json.loads((out / "stream-meta.json").read_text())
     # Both runs used the same model and native runtime. Their recorded hashes
     # can be checked on another machine without rebuilding the original binary.
@@ -32,6 +39,10 @@ def summarize(out):
         path = Path(src)
         if path.name in runtime:
             observed = runtime[path.name]
+        elif archived and path.parts[:1] == ("demo",):
+            # The sealed metadata identifies the measured code at source_commit.
+            # A later checkout can rescore the trace without the old source tree.
+            continue
         else:
             observed = sha256(manifest_path if path.name == manifest_path.name else path)
         if observed != expected:

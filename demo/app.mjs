@@ -1,4 +1,5 @@
 import {LiveSession, RATE, infer, replayPcm} from './stream.mjs';
+import {EndpointSession} from './endpoint.mjs';
 const $ = id => document.getElementById(id);
 let mode = 'file', busy = false, selected, mic, replay, config, objectUrl, sourceVersion = 0;
 const sec = s => s.toLocaleString('ru-RU', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' с';
@@ -22,10 +23,11 @@ function controls() {
   $('filePanel').hidden = microphone;
   $('micPanel').hidden = !microphone;
   $('draftHint').hidden = !live;
+  $('streamPolicyField').hidden = !live;
   $('fileMode').setAttribute('aria-pressed', String(!live));
   $('micMode').setAttribute('aria-pressed', String(microphone));
   $('replayMode').setAttribute('aria-pressed', String(mode === 'replay'));
-  for (const id of ['fileMode','micMode','replayMode','model','language','context','sample','file']) $(id).disabled = busy;
+  for (const id of ['fileMode','micMode','replayMode','model','language','context','streamPolicy','sample','file']) $(id).disabled = busy;
   $('action').textContent = microphone ? (active ? 'Остановить запись' : 'Начать запись')
     : mode === 'replay' ? (active ? 'Остановить поток' : 'Воспроизвести потоком') : 'Распознать';
   $('action').classList.toggle('recording', active);
@@ -96,8 +98,10 @@ async function offline() {
 }
 function newSession(run, onError) {
   const opts = options();
-  return new LiveSession(frames => infer('', opts, frames), data => {
-    drawText(data.stable, data.partial); metrics(data);
+  const Session = $('streamPolicy').value === 'endpoint' ? EndpointSession : LiveSession;
+  return new Session(frames => infer('', opts, frames), data => {
+    drawText(data.stable, data.partial);
+    if (!data.reused) metrics(data);
     const elapsed = sec((performance.now() - run.started) / 1000);
     if (!run.first && (data.partial || data.stable)) { $('firstMetric').textContent = elapsed; run.first = true; }
     if (!run.firstStable && data.stable) { $('confirmMetric').textContent = elapsed; run.firstStable = true; }

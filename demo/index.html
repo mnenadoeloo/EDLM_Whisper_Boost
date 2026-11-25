@@ -28,6 +28,7 @@
 <label>Модель<select id="model"></select></label>
 <label>Язык записи<select id="language"><option value="ru">Русский</option><option value="en">English</option></select></label>
 <label>Аудиоконтекст<select id="context"><option value="full">Полный · 1500</option><option value="adaptive">Адаптивный · от 256</option><option value="conservative">Адаптивный · от 768</option></select></label>
+<label id="streamPolicyField" hidden>Обновление текста<select id="streamPolicy"><option value="agreement">Подтверждать совпавшие слова</option><option value="endpoint">Готовить финал во время паузы</option></select></label>
 <p id="threads" class="meta"></p>
 <h2 class="metricTitle">Измерения</h2>
 <dl><div><dt id="audioLabel">Длина записи</dt><dd id="audioMetric">—</dd></div>
@@ -37,6 +38,6 @@
 <div class="liveMetric" hidden><dt>Первое подтверждение</dt><dd id="confirmMetric">—</dd></div>
 <div class="liveMetric" hidden><dt>После остановки</dt><dd id="tailMetric">—</dd></div>
 </dl>
-<p class="meta">RTF = время запуска CLI с загрузкой модели / длительность аудио. При RTF &lt; 1 обработка быстрее записи.</p>
+<p class="meta">RTF = время обработки / длительность аудио. При RTF &lt; 1 обработка быстрее записи.</p>
 </aside></div>
 </main><script type="module" src="/app.mjs"></script></body></html>

@@ -21,6 +21,7 @@ CLI = ROOT / '.work/whisper.cpp/build/bin/whisper-cli'
 MAX_BYTES = 20 * 1024 * 1024
 ASSETS = {'/': ('index.html', 'text/html; charset=utf-8'),
           '/app.mjs': ('app.mjs', 'text/javascript'), '/stream.mjs': ('stream.mjs', 'text/javascript'),
+          '/endpoint.mjs': ('endpoint.mjs', 'text/javascript'),
           '/mic.js': ('mic.js', 'text/javascript'), '/style.css': ('style.css', 'text/css')}
 
 

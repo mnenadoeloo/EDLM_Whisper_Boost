@@ -1,0 +1,54 @@
+{
+  "device": {
+    "backend": "cpu",
+    "cpu": "Apple M3 Pro",
+    "arch": "arm64",
+    "platform": "macOS-27.2.1-arm64-arm-64bit",
+    "host": "MacBook-Pro.local",
+    "logical_cpus": 12
+  },
+  "model": "m3_enc1",
+  "model_sha256": "1dd2f17e6df1e03fcff626f05bf2de8df3048aab1531e3b1aa19d774dd338122",
+  "threads": 4,
+  "context_floor": 768,
+  "playback_rate": 1,
+  "manifest_sha256": "f5fdc08e9b19b737010ee92ac5858eb3a119f0bc2220e2b6e699694926cb4186",
+  "sources": {
+    "demo/server.py": "7f6263b6b487d241deb6cd17cd28482a6b764618b1994f6011ee1b368cad6063",
+    "demo/resident.cpp": "63e6679ff3e394abba1e1db8aa4d45fca567b783abf037f84f9a195a74ca4908",
+    "demo/resident.py": "76af37876f002c71258e82e0c33cc42f41420eccdb0ec17dea2b9003aee7c67c",
+    "demo/stream.mjs": "62f1bb54d38fe0b6903aae51ecc5a8dba47c0bd93edc01e65e763766c0e12288",
+    "demo/endpoint.mjs": "ffc19ee9536cfdaeebfce1131696e4a7739e27f8747beb24dbd0da34894416ec",
+    "research/stream_final.mjs": "d37725e866a7ecc89f3ad896a5be46109e54f6c657c6e3e262daa572aa3de211",
+    "research/stream_final.py": "545151e9f501da7e4fd7f0bbb3707b0e2f77d944038e721e6e55ffd95d1ee4b2",
+    ".work/whisper.cpp/build/src/libwhisper.1.8.2.dylib": "e0de98675d8bea6658ebfd03a69f84514893e5a5506ecc9adff19e8284c8152e"
+  },
+  "sessions": [
+    {
+      "id": "session-ru",
+      "language": "ru",
+      "components": [
+        "golos-ff-test-01605",
+        "golos-ff-test-01615",
+        "golos-ff-test-01633",
+        "golos-ff-test-00548"
+      ],
+      "wav_sha256": "87dd85710f9ed06b9cdff6957978da20b018005c97a93af092f42c5bd2817c0b",
+      "duration_s": 11.6678125,
+      "reference": "сбер перестань сбер добавь мощность освещения в кладовой зачем мыться джой попов занимается спортом"
+    },
+    {
+      "id": "session-en",
+      "language": "en",
+      "components": [
+        "ls-4970-29095-0017",
+        "ls-4970-29095-0034",
+        "ls-2830-3980-0054",
+        "ls-8230-279154-0016"
+      ],
+      "wav_sha256": "4a1daac0d5532b7b7308beb510de2d2bbd378e8680539faf395ed6c930f73b67",
+      "duration_s": 33.425,
+      "reference": "THE SIGHT SEERS RETURNED IN HIGH SPIRITS FROM THE CITY WHY SHOULD I RUST AND BE STUPID AND SIT IN INACTION BECAUSE I AM A GIRL THAT CHRIST IS VERY GOD IS APPARENT IN THAT PAUL ASCRIBES TO HIM DIVINE POWERS EQUALLY WITH THE FATHER AS FOR INSTANCE THE POWER TO DISPENSE GRACE AND PEACE IN ACTUAL FACT THERE ARE DOUBTLESS VARIOUS FACTORS THAT CONCUR IN GIVING US THE FEELING OF GREATER OR LESS REMOTENESS IN SOME REMEMBERED EVENT"
+    }
+  ]
+}

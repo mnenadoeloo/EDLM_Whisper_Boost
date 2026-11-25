@@ -31,4 +31,6 @@ uv run research/benchmark.py m3_panel q4_0+ctx768 m3_enc1+ctx768 team_gptq+ctx76
 uv run research/analyze.py m3_panel --raw .work/team-panel/raw --out .work/team-panel --summary-only
 ```
 
+В конце [презентации](../results/whisper-small.pptx) есть две редактируемые таблицы. Для сравнения методов перенесите RU/EN WER и RTF из строк RTN, GPTQ и калибровки при одной карте, окне и устройстве. Для сравнения устройств используйте результаты на одной тестовой выборке: RTF двух контролей (FP16 с полным окном и Q4 с окном от 768), затем конфигурацию победителя, её ускорение к FP16 и WER обоих языков. Если Q4 отсутствует среди подтверждённых победителей, измерьте её тем же бенчмарком.
+
 [Параметры подбора и Colab](target-tuning.md) · [Результаты M3 Pro](../results/REPORT.md)

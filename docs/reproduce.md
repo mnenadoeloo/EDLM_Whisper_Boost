@@ -72,7 +72,16 @@ uv run research/small_stream.py --out .work/small-rerun
 uv run research/small_summary.py --out .work/small-rerun
 ```
 
-Для пересчёта сохранённых таблиц достаточно `uv run research/small_summary.py`. [Трассы потока](../results/m3-small/stream.jsonl) · [Парные результаты](../results/m3-small/stream-pairs.csv)
+Для пересчёта первого этапа достаточно `uv run research/small_summary.py`. Историческая трасса и версия программы зафиксированы [контрольными суммами](../results/m3-small/stream-archive.json). [Трассы потока](../results/m3-small/stream.jsonl) · [Парные результаты](../results/m3-small/stream-pairs.csv)
+
+**Второй этап** сравнивает файл целиком, исходный поток и подготовку финала во время паузы. Нужны те же WAV, одна модель `m3_enc1` и четыре потока CPU. Один сервер держит веса в памяти для всех трёх режимов. Для короткого повторения на своём устройстве выполните первую команду. Вторая пересчитывает сохранённый опыт без аудио и модели.
+
+```sh
+uv run research/stream_final.py --out .work/stream-final
+uv run research/stream_final.py --out results/stream-final --summarize-only
+```
+
+В `summary.csv` время первого текста отсчитывается от начала подачи аудио, задержка финала — от последнего блока PCM. Корпусный WER и время работы декодера на секунду аудио (RTF) посчитаны отдельно для RU и EN.
 
 ## Быстрые проверки после изменений
 
