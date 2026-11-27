@@ -1,0 +1,189 @@
+diff --git a/examples/common-ggml.cpp b/examples/common-ggml.cpp
+index ddbb3d9..3837b5c 100644
+--- a/examples/common-ggml.cpp
++++ b/examples/common-ggml.cpp
+@@ -43,9 +43,11 @@ bool ggml_common_quantize_0(
+         std::ofstream & fout,
+         const ggml_ftype ftype,
+         const std::vector<std::string> & to_quant,
+-        const std::vector<std::string> & to_skip) {
++        const std::vector<std::string> & to_skip,
++        const ggml_quant_weights * qw) {
+ 
+     ggml_type qtype = GGML_TYPE_F32;
++    std::set<std::string> qw_used;
+ 
+     switch (ftype) {
+         case GGML_FTYPE_MOSTLY_Q4_0: qtype = GGML_TYPE_Q4_0; break;
+@@ -193,7 +195,28 @@ bool ggml_common_quantize_0(
+                 case GGML_TYPE_Q5_K:
+                 case GGML_TYPE_Q6_K:
+                     {
+-                        cur_size = ggml_quantize_chunk((ggml_type) ttype, data_f32.data(), work.data(), 0, nelements/ne[0], ne[0], nullptr);
++                        const float * imat = nullptr;
++                        std::vector<float> ones;
++                        if (qw) {
++                            // tensors without stats get ones, so B and C differ only where stats exist
++                            ones.assign(ne[0], 1.0f);
++                            imat = ones.data();
++                            const char * label = "ones";
++                            auto it = qw->w.find(name);
++                            if (it != qw->w.end()) {
++                                if ((int64_t) it->second.size() != ne[0]) {
++                                    fprintf(stderr, "\n%s: stats for '%s' have %zu values, tensor ne[0] = %d\n", __func__, name.c_str(), it->second.size(), ne[0]);
++                                    return false;
++                                }
++                                imat = it->second.data();
++                                label = "stats";
++                                qw_used.insert(name);
++                            }
++                            printf("[%s] ", label);
++                        } else {
++                            printf("[plain] ");
++                        }
++                        cur_size = ggml_quantize_chunk((ggml_type) ttype, data_f32.data(), work.data(), 0, nelements/ne[0], ne[0], imat);
+                     } break;
+                 case GGML_TYPE_F32:
+                 case GGML_TYPE_F16:
+@@ -241,8 +264,56 @@ bool ggml_common_quantize_0(
+         total_size_org += nelements * sizeof(float);
+     }
+ 
++    if (qw && qw_used.size() != qw->w.size()) {
++        // stats with names that match no quantized tensor would silently turn variant C into B
++        for (const auto & kv : qw->w) {
++            if (!qw_used.count(kv.first)) {
++                fprintf(stderr, "%s: stats for '%s' were not used\n", __func__, kv.first.c_str());
++            }
++        }
++        return false;
++    }
++
+     printf("%s: model size  = %8.2f MB\n", __func__, total_size_org/1024.0/1024.0);
+     printf("%s: quant size  = %8.2f MB | ftype = %d (%s)\n", __func__, total_size_new/1024.0/1024.0, ftype, ggml_type_name(qtype));
+ 
+     return true;
+ }
++
++bool ggml_quant_weights_load(const char * fname, ggml_quant_weights & qw) {
++    std::ifstream f(fname, std::ios::binary);
++    if (!f) {
++        fprintf(stderr, "%s: failed to open '%s'\n", __func__, fname);
++        return false;
++    }
++    int32_t n = 0;
++    f.read(reinterpret_cast<char *>(&n), sizeof(n));
++    if (!f || n <= 0 || n > 100000) {
++        fprintf(stderr, "%s: '%s' is not a stats file (tensor count %d)\n", __func__, fname, n);
++        return false;
++    }
++    for (int32_t i = 0; i < n && f; ++i) {
++        int32_t len = 0, k = 0;
++        f.read(reinterpret_cast<char *>(&len), sizeof(len));
++        if (!f || len <= 0 || len > 4096) {
++            fprintf(stderr, "%s: bad name length %d in '%s'\n", __func__, len, fname);
++            return false;
++        }
++        std::string name(len, 0);
++        f.read(&name[0], len);
++        f.read(reinterpret_cast<char *>(&k), sizeof(k));
++        if (!f || k <= 0 || k > (1 << 20)) {
++            fprintf(stderr, "%s: bad vector length %d for '%s' in '%s'\n", __func__, k, name.c_str(), fname);
++            return false;
++        }
++        std::vector<float> v(k);
++        f.read(reinterpret_cast<char *>(v.data()), k * sizeof(float));
++        qw.w[name] = std::move(v);
++    }
++    if (!f) {
++        fprintf(stderr, "%s: truncated file '%s'\n", __func__, fname);
++        return false;
++    }
++    printf("%s: loaded stats for %zu tensors\n", __func__, qw.w.size());
++    return true;
++}
+diff --git a/examples/common-ggml.h b/examples/common-ggml.h
+index 477de34..5548e52 100644
+--- a/examples/common-ggml.h
++++ b/examples/common-ggml.h
+@@ -5,14 +5,25 @@
+ #include <fstream>
+ #include <vector>
+ #include <string>
++#include <map>
++#include <set>
+ 
+ enum ggml_ftype ggml_parse_ftype(const char * str);
+ 
+ void ggml_print_ftypes(FILE * fp = stderr);
+ 
++struct ggml_quant_weights {
++    std::map<std::string, std::vector<float>> w; // tensor name -> vector of length ne[0]
++    bool ones = false;                           // control B: all-ones vector for every quantized tensor
++};
++
++// binary file: int32 n; n x { int32 len, char name[len], int32 k, float v[k] }  (see calib/npz_to_imatrix.py)
++bool ggml_quant_weights_load(const char * fname, ggml_quant_weights & qw);
++
+ bool ggml_common_quantize_0(
+         std::ifstream & finp,
+         std::ofstream & fout,
+         const ggml_ftype ftype,
+         const std::vector<std::string> & to_quant,
+-        const std::vector<std::string> & to_skip);
++        const std::vector<std::string> & to_skip,
++        const ggml_quant_weights * qw = nullptr);
+diff --git a/examples/quantize/quantize.cpp b/examples/quantize/quantize.cpp
+index 4dbae20..b54c861 100644
+--- a/examples/quantize/quantize.cpp
++++ b/examples/quantize/quantize.cpp
+@@ -37,7 +37,7 @@ struct whisper_filters {
+ };
+ 
+ // quantize a model
+-static bool whisper_model_quantize(const std::string & fname_inp, const std::string & fname_out, ggml_ftype ftype) {
++static bool whisper_model_quantize(const std::string & fname_inp, const std::string & fname_out, ggml_ftype ftype, const ggml_quant_weights * qw) {
+     gpt_vocab vocab;
+ 
+     printf("%s: loading model from '%s'\n", __func__, fname_inp.c_str());
+@@ -165,7 +165,7 @@ static bool whisper_model_quantize(const std::string & fname_inp, const std::str
+         "decoder.positional_embedding",
+     };
+ 
+-    if (!ggml_common_quantize_0(finp, fout, ftype, { ".*" }, to_skip)) {
++    if (!ggml_common_quantize_0(finp, fout, ftype, { ".*" }, to_skip, qw)) {
+         fprintf(stderr, "%s: failed to quantize model '%s'\n", __func__, fname_inp.c_str());
+         return false;
+     }
+@@ -179,8 +179,21 @@ static bool whisper_model_quantize(const std::string & fname_inp, const std::str
+ int main(int argc, char ** argv) {
+     ggml_backend_load_all();
+ 
++    ggml_quant_weights qw;
++    bool use_qw = false;
++    if (argc == 5 && !strcmp(argv[4], "--imatrix-ones")) {
++        qw.ones = use_qw = true;
++        argc = 4;
++    } else if (argc == 6 && !strcmp(argv[4], "--imatrix")) {
++        if (!ggml_quant_weights_load(argv[5], qw)) {
++            return 1;
++        }
++        use_qw = true;
++        argc = 4;
++    }
++
+     if (argc != 4) {
+-        fprintf(stderr, "usage: %s model-f32.bin model-quant.bin type\n", argv[0]);
++        fprintf(stderr, "usage: %s model-f32.bin model-quant.bin type [--imatrix-ones | --imatrix stats.bin]\n", argv[0]);
+         ggml_print_ftypes(stderr);
+         return 1;
+     }
+@@ -205,7 +218,7 @@ int main(int argc, char ** argv) {
+     {
+         const int64_t t_start_us = ggml_time_us();
+ 
+-        if (!whisper_model_quantize(fname_inp, fname_out, ggml_ftype(ftype))) {
++        if (!whisper_model_quantize(fname_inp, fname_out, ggml_ftype(ftype), use_qw ? &qw : nullptr)) {
+             fprintf(stderr, "%s: failed to quantize model from '%s'\n", __func__, fname_inp.c_str());
+             return 1;
+         }
