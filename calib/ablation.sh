@@ -9,7 +9,7 @@ case $FMT in
 esac
 SIZES="20 50 200"
 DATA=../../asr_data
-OUT=../../results/ablation_$FMT
+OUT=../calib/results/ablation_$FMT
 A=A$SUF.bin
 B=B$SUF.bin
 

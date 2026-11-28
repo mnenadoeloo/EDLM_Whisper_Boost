@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-OUT=../../results
+OUT=../calib/results
 DATA=../../asr_data
 HF=../../whisper-small
 CPUS=${CPUS:-8,9,10,11}
