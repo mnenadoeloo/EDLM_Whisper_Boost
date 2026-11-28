@@ -1,0 +1,7 @@
+whisper.cpp/
+__pycache__/
+
+*.bin
+*.npz
+*.wav
+*.log

@@ -1,0 +1,15 @@
+
+== encoder (72 layers): geometric mean of per-layer error ratios (<1 is better)
+     plain: B/A=0.796  C/A=0.882  C/B=1.108  (C better than B in 0/72)
+     calib: B/A=0.813  C/A=0.598  C/B=0.736  (C better than B in 72/72)
+   heldout: B/A=0.813  C/A=0.604  C/B=0.743  (C better than B in 72/72)
+
+== decoder (120 layers): geometric mean of per-layer error ratios (<1 is better)
+     plain: B/A=0.795  C/A=0.873  C/B=1.098  (C better than B in 0/120)
+     calib: B/A=0.807  C/A=0.491  C/B=0.609  (C better than B in 120/120)
+   heldout: B/A=0.807  C/A=0.510  C/B=0.632  (C better than B in 120/120)
+
+== all (192 layers): geometric mean of per-layer error ratios (<1 is better)
+     plain: B/A=0.795  C/A=0.877  C/B=1.102  (C better than B in 0/192)
+     calib: B/A=0.809  C/A=0.529  C/B=0.653  (C better than B in 192/192)
+   heldout: B/A=0.809  C/A=0.543  C/B=0.671  (C better than B in 192/192)

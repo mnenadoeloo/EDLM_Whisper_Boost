@@ -1,0 +1,15 @@
+
+== encoder (72 layers): geometric mean of per-layer error ratios (<1 is better)
+     plain: B_q5/A_q5=0.798  C_q5/A_q5=0.880  C_q5/B_q5=1.103  (C_q5 better than B_q5 in 0/72)
+     calib: B_q5/A_q5=0.811  C_q5/A_q5=0.599  C_q5/B_q5=0.738  (C_q5 better than B_q5 in 72/72)
+   heldout: B_q5/A_q5=0.811  C_q5/A_q5=0.604  C_q5/B_q5=0.745  (C_q5 better than B_q5 in 72/72)
+
+== decoder (120 layers): geometric mean of per-layer error ratios (<1 is better)
+     plain: B_q5/A_q5=0.795  C_q5/A_q5=0.871  C_q5/B_q5=1.096  (C_q5 better than B_q5 in 0/120)
+     calib: B_q5/A_q5=0.809  C_q5/A_q5=0.492  C_q5/B_q5=0.608  (C_q5 better than B_q5 in 120/120)
+   heldout: B_q5/A_q5=0.808  C_q5/A_q5=0.511  C_q5/B_q5=0.632  (C_q5 better than B_q5 in 120/120)
+
+== all (192 layers): geometric mean of per-layer error ratios (<1 is better)
+     plain: B_q5/A_q5=0.796  C_q5/A_q5=0.874  C_q5/B_q5=1.098  (C_q5 better than B_q5 in 0/192)
+     calib: B_q5/A_q5=0.810  C_q5/A_q5=0.530  C_q5/B_q5=0.654  (C_q5 better than B_q5 in 192/192)
+   heldout: B_q5/A_q5=0.809  C_q5/A_q5=0.544  C_q5/B_q5=0.672  (C_q5 better than B_q5 in 192/192)
