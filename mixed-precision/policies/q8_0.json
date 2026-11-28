@@ -1,0 +1,8 @@
+{
+  "source_model": "openai/whisper-small",
+  "default": {
+    "format": "Q8_0",
+    "method": "rtn"
+  },
+  "rules": []
+}

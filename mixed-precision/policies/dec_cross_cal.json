@@ -1,0 +1,23 @@
+{
+  "source_model": "openai/whisper-small",
+  "default": {
+    "format": "Q4_0",
+    "method": "rtn"
+  },
+  "rules": [
+    {
+      "pattern": "decoder.blocks.*.cross_attn.*.weight",
+      "format": "Q8_0",
+      "method": "rtn"
+    },
+    {
+      "pattern": "encoder.blocks.0.attn.[kqv]*.weight",
+      "format": "Q4_0",
+      "method": "calibration_aware"
+    }
+  ],
+  "calibration": {
+    "path": "results/models/calibration.json",
+    "sha256": "ef02594abf642240eb251955685bbb9a38b92a645cb969f711c1a1fc00d5de52"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "file_bytes": 159616063,
+  "unchanged_tensors": 476,
+  "changed_tensors": [
+    "encoder.blocks.0.attn.query.weight",
+    "encoder.blocks.0.attn.key.weight",
+    "encoder.blocks.0.attn.value.weight"
+  ],
+  "rtn_sha256": "5d1805725ab071124e50e7f0dba45fc02dac89048e5a7b8c29b46411dce3ec2f",
+  "variant_sha256": "904d15405b530b1d26b8186f2601900ba15be28e45922f28642cf2c6d2b1b07e"
+}

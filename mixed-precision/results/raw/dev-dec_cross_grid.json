@@ -1,0 +1,50 @@
+{
+  "split": "dev",
+  "threads": 4,
+  "flags": [
+    "-ng",
+    "-fa",
+    "-bs",
+    "1",
+    "-bo",
+    "1",
+    "-tp",
+    "0",
+    "-nf",
+    "-nt",
+    "-otxt"
+  ],
+  "host": "MacBook-Pro.local",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "cli_sha256": "6dbc66c1d68d7b290f35fbd10653cac6b3e85fd733ca459f21dafc7814483b2a",
+  "libraries": {
+    "libggml-base.dylib": "8ae1f60d94660eae410349224880dda17a73922b67cf601da1ff85513c17e808",
+    "libggml-cpu.dylib": "4b4c46cf8c023afd7536ac41656d0027bdae3f48d341608487066fc815aad645",
+    "libggml.dylib": "16e24c23c9a7abafeac0e23ce9bc05f04ed9b4d6ee099c882f989eed4c04a20c",
+    "libwhisper.1.8.2.dylib": "e0de98675d8bea6658ebfd03a69f84514893e5a5506ecc9adff19e8284c8152e"
+  },
+  "audio_sha256": {
+    "ls-2035-147961-0037": "569dc9292e5ac1b8237ff08dc8c27c414be57bd1acb09925b7925b01caaac2f3",
+    "ls-84-121550-0015": "71a4d2014e2f47e6d5dbb30c05eafe76db8e77231788fb42ae7022359c39ff1a",
+    "ls-6295-64301-0023": "969d135de8c68a80ac75260f7b04f9bb85bc813f730c0e42a82606b71c54a9ef",
+    "ls-1272-128104-0008": "9514dcfa2f52cd7540c686c555213ca539b7ec8913b93913d14bfed151bdb72e",
+    "ls-3752-4944-0016": "51b273db499f83fbc6a650a66a27b7370dc0e628098f7947d4631281b0efc0ff",
+    "ls-2428-83705-0025": "bf1395cece4328ac9f661f51e16549458ba03ee6575211c4b0c122760c69c788",
+    "ls-2412-153954-0017": "b305c0d0686c4b0c46b141f5bb17b0405eaf6168dadde43b9fbed75fa9f5eb77",
+    "ls-8842-304647-0007": "eedea80b5627ca054e19a7919db2697ee9f2c16398d2dc95e0e6f2ba65ac9b58",
+    "golos-ff-validation-00058": "b16d3bc825e9864faa52bfbf20e4deafa8200338a4c948fa7957718df073525d",
+    "golos-ff-validation-00174": "b852f8b2f0bd6ac5da9ea7580347021bb39a3761ab42a53d02dc6ba97b16c897",
+    "golos-ff-validation-00291": "e965a4c2d02c2c5a747c9e9a5320f61a0c66f3b1df9eb3bda2bfad76ddd1adae",
+    "golos-ff-validation-00408": "5f57aef80ce7ad21f8cd7cffc6595c79986263a39c559fc587ec5a2ea4f13908",
+    "golos-ff-validation-00524": "83d1e8c5f0a8d7585ed83e835544272738b4686e3d00d9b584ee35716bbdec6a",
+    "golos-ff-validation-00641": "c9e12a7f39f5ad5270a4a654b914a4cba165b4943e886547487a663f03dce270",
+    "golos-ff-validation-00758": "c870a2efe9b3f71c4bcdbbda89e5e93ab9662ff2a38ca2b7e2696b0944c1d69f",
+    "golos-ff-validation-00874": "e75c6be7e0d4f39499ef11598274a2ca2123f38c9ddec8d9819e84cb08bdd473"
+  },
+  "manifest_sha256": "c4e1b83c066732d54e67cc5cfbf0c6203f6108fea2b15d424229ff9a21d69513",
+  "warmup": "ls-374-180298-0000",
+  "context_rule": "min(1500,max(256,64*ceil((duration_s+1)*50/64)))",
+  "config": "dec_cross_grid",
+  "model_bytes": 159616063,
+  "model_sha256": "7772b185d31a2db0e94cae901d92c1aecd3b68bc1e365f6b65cf93ae4be2c755"
+}

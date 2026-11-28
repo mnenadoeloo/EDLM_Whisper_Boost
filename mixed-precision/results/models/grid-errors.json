@@ -1,0 +1,26 @@
+{
+  "encoder.blocks.0.attn.query.weight": {
+    "blocks": 18432,
+    "changed_blocks": 14804,
+    "rtn_payload_sha256": "aefc150773393d7692c867f7f700180d2d4e552bced26249e4cb3755fadf73f3",
+    "calibrated_payload_sha256": "75c10e26af042df05d7a999f8b1fe193f4d8d8c5e6f1d708d947cdd721f76d42",
+    "rtn_sse": 2.3059442131151258,
+    "grid_sse": 2.135110905250073
+  },
+  "encoder.blocks.0.attn.key.weight": {
+    "blocks": 18432,
+    "changed_blocks": 14780,
+    "rtn_payload_sha256": "3cccd75b4d6dd89ba4134bb6334cdc598103706b3adbbef13a04fb9f03fac213",
+    "calibrated_payload_sha256": "c27892dc699578000461b5215a5d9c86e993d733571d237e2dec0642b508e1ca",
+    "rtn_sse": 2.606807669019812,
+    "grid_sse": 2.4109272835859024
+  },
+  "encoder.blocks.0.attn.value.weight": {
+    "blocks": 18432,
+    "changed_blocks": 15056,
+    "rtn_payload_sha256": "5947b20a9bebacc3dfe5e501f701c9648fedb7d76b9ea658bac3a9106a3a715e",
+    "calibrated_payload_sha256": "4703d4762bd123e6e436107cb3879a6e120bd9d6c3d5013e44fba25e3e7ec653",
+    "rtn_sse": 1.746833562052995,
+    "grid_sse": 1.5896722511254318
+  }
+}

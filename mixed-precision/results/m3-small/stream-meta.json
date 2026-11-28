@@ -1,0 +1,36 @@
+{
+  "sha256": {
+    ".work/whisper.cpp/build/bin/whisper-cli": "6dbc66c1d68d7b290f35fbd10653cac6b3e85fd733ca459f21dafc7814483b2a",
+    ".work/models/m3_enc1.bin": "1dd2f17e6df1e03fcff626f05bf2de8df3048aab1531e3b1aa19d774dd338122",
+    "data/m3_panel.jsonl": "89012eba00fe73b7f2ee03e09d0818dcb1560f2652d572ac2e32cf1bf221bd8c",
+    "results/m3-small/stream-manifest.jsonl": "f5fdc08e9b19b737010ee92ac5858eb3a119f0bc2220e2b6e699694926cb4186",
+    "demo/resident.cpp": "63e6679ff3e394abba1e1db8aa4d45fca567b783abf037f84f9a195a74ca4908",
+    "demo/resident.py": "76af37876f002c71258e82e0c33cc42f41420eccdb0ec17dea2b9003aee7c67c",
+    "demo/server.py": "93f05d4abce19252523b0a4d3ce77103ebb8a7c6e781d1f3d533f2634ea0c2da",
+    "demo/replay.mjs": "fd041efd3b9b1e92953cb5c70c9f82b39df2055cec7b4448b8ea2c8c9c17e29b",
+    "demo/stream.mjs": "62f1bb54d38fe0b6903aae51ecc5a8dba47c0bd93edc01e65e763766c0e12288",
+    ".work/whisper.cpp/build/src/libwhisper.1.8.2.dylib": "e0de98675d8bea6658ebfd03a69f84514893e5a5506ecc9adff19e8284c8152e"
+  },
+  "warmup_id": "ls-374-180298-0000",
+  "warmups": [
+    {
+      "text": "Chapter 16. I might have told you of the beginning of this liaison in a few lines, but I wanted you to see every step by which we came. I too agree to whatever Marguerite wished.",
+      "audio_s": 14.53,
+      "compute_s": 0.8756253329920582,
+      "rtf": 0.0602632713690336,
+      "context": 832
+    },
+    {
+      "text": "Chapter 16. I might have told you of the beginning of this liaison in a few lines, but I wanted you to see every step by which we came. I too agree to whatever Marguerite wished.",
+      "audio_s": 14.53,
+      "compute_s": 0.796111916017253,
+      "rtf": 0.05479090956760172,
+      "context": 832
+    }
+  ],
+  "model": "m3_enc1",
+  "threads": 4,
+  "floor": 768,
+  "replay_rate": 1,
+  "backend_order": "AB/BA per language"
+}

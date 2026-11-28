@@ -1,0 +1,30 @@
+{
+  "pair": [
+    "enc_attn+ctx768",
+    "m3_enc1+ctx768"
+  ],
+  "model_sha256": {
+    "enc_attn+ctx768": "34b0c72b3d8d0bb3d06ac4e8bf9ef5dbff2f044f5200625e3229c715c018d410",
+    "m3_enc1+ctx768": "1dd2f17e6df1e03fcff626f05bf2de8df3048aab1531e3b1aa19d774dd338122"
+  },
+  "meets_dev_budget": true,
+  "worst_dev_wer_delta_pp": {
+    "m3_enc1+ctx768": -0.15772870662460559,
+    "m3_enc2+ctx768": 0.0,
+    "m3_enc3+ctx768": -0.15772870662460559,
+    "m3_head+ctx768": 1.0695187165775408
+  },
+  "eligible": [
+    "m3_enc1+ctx768",
+    "m3_enc2+ctx768",
+    "m3_enc3+ctx768"
+  ],
+  "frozen_sha256": {
+    "data/m3_dev.jsonl": "621558965653be11381dfe70c3642785029828bffc01dd6c7fea9fb9a54bde20",
+    "data/m3_test.jsonl": "5e117f84bb584fab035f320da32dc1adc8aab2b01db0685d02d696d58f28dbc6",
+    "data/m3_panel.jsonl": "89012eba00fe73b7f2ee03e09d0818dcb1560f2652d572ac2e32cf1bf221bd8c",
+    "results/m3/PROTOCOL.md": "c02b7bdaec7a261f4a10d230396bf82bafd97377d48089b1b0a2c33d0816e5f6",
+    "results/m3/matmul.csv": "8cd767c6d2c2ebfb33195d32d6669330dcbabcf88441efe20dd8464578014f7b",
+    "results/m3/candidates.csv": "e7e391eddd26d2373676c134093b09f542ee47564d7b1220997ba3c9fb8f5c70"
+  }
+}

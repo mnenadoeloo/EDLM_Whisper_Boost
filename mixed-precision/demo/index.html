@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Whisper · Лаборатория речи</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header><div class="brand"><span class="mark" aria-hidden="true">∿</span> Whisper Boost</div><span class="chip">CPU · local</span></header>
+<main><h1>Распознавание речи</h1>
+<div class="layout">
+<section class="work">
+<div class="modes" role="group" aria-label="Источник звука">
+<button id="fileMode" aria-pressed="true">Файл</button><button id="replayMode" aria-pressed="false">Поток из файла</button><button id="micMode" aria-pressed="false">Микрофон</button>
+</div>
+<div class="source">
+<div id="filePanel">
+<label class="upload" for="file"><span id="fileName">Выбрать аудиофайл</span><small>WAV, MP3 или другой формат вашего браузера</small></label>
+<input id="file" class="sr" type="file" accept="audio/*">
+<label id="sampleField" hidden>Пример записи<select id="sample"><option value="">Выберите запись</option></select></label>
+<audio id="player" controls hidden></audio>
+</div>
+<div id="micPanel" hidden><h2>Запись с микрофона</h2><p>Разрешите доступ к микрофону. Текст появится по мере речи, а после паузы фраза будет завершена.</p></div>
+<button id="action" class="primary" disabled>Распознать</button>
+<p id="status" role="status">Подключение к модели…</p>
+</div>
+<div class="output">
+<h2>Транскрипция</h2><p id="transcript"><span id="stable"></span><em id="partial"></em><span id="placeholder">Здесь появится распознанная речь.</span></p>
+<p id="draftHint" hidden><span>●</span> Курсивом показана предварительная гипотеза.</p>
+</div></section>
+<aside><h2>Параметры</h2>
+<label>Модель<select id="model"></select></label>
+<label>Язык записи<select id="language"><option value="ru">Русский</option><option value="en">English</option></select></label>
+<label>Аудиоконтекст<select id="context"><option value="full">Полный · 1500</option><option value="adaptive">Адаптивный · от 256</option><option value="conservative">Адаптивный · от 768</option></select></label>
+<label id="streamPolicyField" hidden>Обновление текста<select id="streamPolicy"><option value="agreement">Подтверждать совпавшие слова</option><option value="endpoint">Готовить финал во время паузы</option></select></label>
+<p id="threads" class="meta"></p>
+<h2 class="metricTitle">Измерения</h2>
+<dl><div><dt id="audioLabel">Длина записи</dt><dd id="audioMetric">—</dd></div>
+<div><dt id="timeLabel">Время CLI</dt><dd id="timeMetric">—</dd></div>
+<div><dt id="rtfLabel">RTF</dt><dd id="rtfMetric">—</dd></div>
+<div class="liveMetric" hidden><dt>Первый текст</dt><dd id="firstMetric">—</dd></div>
+<div class="liveMetric" hidden><dt>Первое подтверждение</dt><dd id="confirmMetric">—</dd></div>
+<div class="liveMetric" hidden><dt>После остановки</dt><dd id="tailMetric">—</dd></div>
+</dl>
+<p class="meta">RTF = время обработки / длительность аудио. При RTF &lt; 1 обработка быстрее записи.</p>
+</aside></div>
+</main><script type="module" src="/app.mjs"></script></body></html>

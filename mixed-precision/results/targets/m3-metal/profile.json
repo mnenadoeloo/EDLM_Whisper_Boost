@@ -1,0 +1,35 @@
+{
+  "workload": "one CLI process per recording, model load included",
+  "device": {
+    "backend": "metal",
+    "cpu": "Apple M3 Pro",
+    "arch": "arm64",
+    "platform": "macOS-27.2.1-arm64-arm-64bit",
+    "host": "MacBook-Pro.local",
+    "logical_cpus": 12
+  },
+  "models_sha256": {
+    "fp16": "1be3a9b2063867b937e64e2ec7483364a79917e157fa98c5d94b5c1fffea987b",
+    "m3_enc1": "1dd2f17e6df1e03fcff626f05bf2de8df3048aab1531e3b1aa19d774dd338122",
+    "q4_0": "f6099c17a4305c6d173ef90ab6f15150dcbb85332b7831313bf36a378d7c5a85"
+  },
+  "cli_sha256": "de5e854be80b0d7cc2c288891b6f8cf202c83b81273f07ae945f6926ac436395",
+  "split": "dev",
+  "manifest_sha256": "c4e1b83c066732d54e67cc5cfbf0c6203f6108fea2b15d424229ff9a21d69513",
+  "configs": [
+    "fp16",
+    "fp16+ctx768",
+    "m3_enc1",
+    "m3_enc1+ctx768",
+    "q4_0",
+    "q4_0+ctx768"
+  ],
+  "threads": [
+    4
+  ],
+  "reference": {
+    "config": "fp16",
+    "threads": 4
+  },
+  "repeats": 1
+}

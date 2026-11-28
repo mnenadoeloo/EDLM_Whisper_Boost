@@ -1,0 +1,8 @@
+# Python's CSV writer uses CRLF. Keep the bytes used in the frozen experiment hashes.
+*.csv -text whitespace=cr-at-eol
+*.json text eol=lf
+*.jsonl text eol=lf
+*.md text eol=lf
+# A context line for an empty source line contains one space in a unified diff.
+*.patch text eol=lf whitespace=-blank-at-eol
+*.pptx binary
